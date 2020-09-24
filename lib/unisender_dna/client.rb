@@ -10,42 +10,6 @@ module UnisenderDna
       @url = "https://api.unisender.com/ru/api"
     end
 
-    def translate_params_new(params)
-      params.inject({}) do |iparams, (k, v)|
-        if k == :field_names
-          v.each_with_index do |name, index|
-            iparams["field_names[#{index}]"] = name
-          end
-        elsif k == :data
-          v.each_with_index do |row, index|
-            row.each_with_index do |data, data_index|
-              iparams["data[#{index}][#{data_index}]"] = data
-            end if row
-          end
-        else
-          case v
-          when String
-            iparams[k.to_s] = v
-          when Array
-            iparams[k.to_s] = v.map(&:to_s).join(',')
-          when Hash
-            v.each do |key, value|
-              if value.is_a? Hash
-                value.each do |v_key, v_value|
-                  iparams["#{k}[#{key}][#{v_key}]"] = v_value.to_s
-                end
-              else
-                iparams["#{k}[#{key}]"] = value.to_s
-              end
-            end
-          else
-            iparams[k.to_s] = v.to_s
-          end
-        end
-        iparams
-      end
-    end
-
     def translate_params(params)
       params.inject({}) do |iparams, (k, v)|
         if k == :field_names
@@ -82,7 +46,6 @@ module UnisenderDna
       end
     end
 
-
     def send_email(params)
       response = get_lists
 
@@ -94,7 +57,7 @@ module UnisenderDna
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
 
-      params = translate_params_new(params).delete_if { |_, v| v.empty? }
+      params = translate_params(params).delete_if { |_, v| v.empty? }
       params.merge!({ 'api_key' => api_key, 'list_id' => list_id, 'format' => 'json' })
       response = Net::HTTP.post_form(URI("#{@url}/sendEmail"), params)
 
