@@ -1,6 +1,6 @@
-RSpec.describe Unione do
+RSpec.describe UnisenderDna do
   it "has a version number" do
-    expect(Unione::VERSION).not_to be nil
+    expect(UnisenderDna::VERSION).not_to be nil
   end
 
   it "does something useful" do

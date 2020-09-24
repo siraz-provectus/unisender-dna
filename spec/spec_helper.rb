@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "unione"
+require "unisender_dna"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

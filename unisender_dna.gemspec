@@ -1,17 +1,16 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "unione/version"
+require "unisender_dna/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "unione"
-  spec.version       = Unione::VERSION
+  spec.name          = "unisender_dna"
+  spec.version       = UnisenderDna::VERSION
   spec.authors       = ["Airat Sirazutdinov"]
   spec.email         = ["siraz@yandex.ru"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Adds ActionMailer settings to easily integrate with Uniosender"
+  spec.homepage      = "https://github.com/siraz-provectus/unisender_dna"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
