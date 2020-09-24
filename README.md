@@ -1,6 +1,6 @@
-# Unione
+# UnisenderDna
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/unione`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/unisender_dna`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
 
@@ -9,7 +9,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'unione'
+gem 'unisender_dna'
 ```
 
 And then execute:
@@ -18,38 +18,15 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install unione
+    $ gem install unisender_dna
 
 ## Usage
-
-update the settings for action_mailer
-
-```ruby
-  config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.example.ru',
-    port: '25',
-    user_name: 'your_username',
-    password: 'your_password',
-    authentication: :plain,
-    openssl_verify_mode: 'none'
-  }
-```
-
-add api_key and username to secretes.yml
-
-```ruby
-  unione:
-    username: your_username
-    api_key: your_api_key
-```
 
 Add follow code to application_mailer
 
 ```ruby
-  self.delivery_method = :unione
-  self.unione_settings = Rails.application.secrets.unione
+  self.delivery_method = :unisender_dna
+  self.unisender_dna_settings = { api_key: 'api_key', sender_name: 'info@example.com' }
 ```
 
 
